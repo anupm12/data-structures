@@ -1,3 +1,5 @@
+import math as m
+
 class Node:
     def __init__(self, value=None):
         self.value = value
@@ -90,6 +92,67 @@ class linkedList:
             current = current.next
         print(a)
 
+    def reverse(self):
+        prev = self.first
+        current = self.first.next
+        nxt = current.next
+        while(current != None):
+            current.next = prev
+            if(current != self.last):
+                prev = current
+                current = nxt
+                if(nxt.next != None):
+                    nxt = nxt.next
+            else:
+                break
+        self.first.next = None
+        self.first = self.last
+        self.last = current
+
+    def middle(self):
+        current = self.first
+        i=1
+        middle = m.ceil(self.count/2)
+        while(current != None and i<=middle+1):
+            if(middle == i):
+                print(current.value)
+            if(self.count % 2 ==0 and i == middle+1):
+                print(current.value)
+            current = current.next
+            i+=1
+    
+    def printk(self, k):
+        first = second = self.first
+        i=1
+        while(second != None and i < k):
+            second = second.next
+            i+=1
+        while(second.next != None):
+            first = first.next
+            second = second.next
+        print(first.value)
+
+    def findLoop(self):
+        stepOne = stepTwo = self.first
+        while(stepTwo != None):
+            stepOne = stepOne.next
+            stepTwo = stepTwo.next.next
+            if(stepOne == stepTwo):
+                return 1
+        return -1
+
+def createLoop():
+    lk = linkedList()
+    lk.addLast(10)
+    lk.addLast(20)
+    lk.addLast(30)
+    ref = lk.last
+    lk.addLast(40)
+    lk.addLast(50)
+    lk.last.next = ref
+
+    return lk
+
 # CREATE NEW
 lk1 = linkedList()
 
@@ -97,6 +160,9 @@ lk1 = linkedList()
 lk1.addLast(10)
 lk1.addLast(20)
 lk1.addLast(30)
+lk1.addLast(40)
+lk1.addLast(50)
+lk1.addLast(60)
 
 # ADD FIRST
 # lk1.addFirst(40)
@@ -121,3 +187,19 @@ lk1.addLast(30)
 
 # TO ARRAY
 # lk1.toArray()
+
+# REVERSE
+# lk1.reverse()
+
+# MIDDLE
+# lk1.middle()
+
+# PRINT Kth NODE
+# lk1.printk(4)
+
+# CREATE A LINKED LIST WITH LOOP(TESTING ONLY)
+# createLoop()
+
+# FIND IF THERE IS A LOOP
+# lk = createLoop()
+# print(lk.findLoop())
