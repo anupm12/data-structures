@@ -23,7 +23,6 @@ class stack:
         if(self.isEmpty()):
             print("Stack empty")
         else:
-            print(self.stk[self.top-1])
             self.top-=1
 
     def peek(self):

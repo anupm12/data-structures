@@ -1,4 +1,4 @@
-from resources.stack import stack
+from stack import stack
 
 class queue:
     def __init__(self, size):
@@ -9,8 +9,11 @@ class queue:
         self.count = 0
     
     def print(self):
-        for i in self.queue[:len(self.queue)]:
-            print(i)
+        temp = self.front
+        for i in range(self.count):
+            print(self.queue[temp])
+            temp+=1
+            temp = temp % self.size
     
     def enqueue(self, value):
         if(self.count == len(self.queue)):
@@ -53,13 +56,13 @@ def reverseK(k, que):
             q.enqueue(que.dequeue())
     q.print()
 
-que = queue(5)
+# que = queue(5)
 
 #ENQUEUE
-que.enqueue(1)
-que.enqueue(2)
-que.enqueue(3)
-que.print()
+# que.enqueue(1)
+# que.enqueue(2)
+# que.enqueue(3)
+# que.print()
 
 # DEQUEUE
 # que.dequeue()
