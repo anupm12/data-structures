@@ -79,6 +79,33 @@ class linkedList:
                 current = current.next
         self.count-=1
 
+    def removeAt(self, k):
+        if(self.count == 0):
+            print("Empty")
+            return
+
+        if(self.count == 1):
+            self.first = self.last = None
+            self.count-=1
+            return
+
+        if(self.count == 2):
+            self.last = self.first
+            self.count-=1
+            return
+
+        first = self.first
+        second = first.next
+        i=1
+        while(second != None and i < k-1):
+            first = first.next
+            second = second.next
+            i+=1
+        
+        first.next = second.next
+        second = None
+        self.count-=1
+
     def size(self):
         return self.count
     
@@ -178,6 +205,9 @@ lk1.addLast(60)
 
 # REMOVE FIRST
 # lk1.removeLast()
+
+# REMOVE AT
+# lk1.removeAt(3)
 
 # PRINT
 # lk1.print()
