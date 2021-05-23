@@ -65,14 +65,26 @@ class binaryTree:
         self.__traversePostOrder(root.rightChild)
         print(root.value)
 
+    def height(self):
+        print(self.__height(self.root))
+
+    def __height(self, root):
+        if root == None:
+            return -1
+
+        if root.leftChild == None and root.rightChild == None:
+            return 0
+
+        return 1 + max(self.__height(root.leftChild), self.__height(root.rightChild))
+
 bt = binaryTree()
 
 #INSERT
-bt.insert(10)
-bt.insert(5)
-bt.insert(20)
-bt.insert(15)
-bt.insert(25)
+# bt.insert(10)
+# bt.insert(5)
+# bt.insert(20)
+# bt.insert(15)
+# bt.insert(25)
 
 #FIND
 # print(bt.find(20))
@@ -85,3 +97,6 @@ bt.insert(25)
 
 #TRAVERSE - POST ORDER
 # bt.traversePostOrder()
+
+#HEIGHT
+bt.height()
