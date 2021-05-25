@@ -77,14 +77,26 @@ class binaryTree:
 
         return 1 + max(self.__height(root.leftChild), self.__height(root.rightChild))
 
+    def min(self):
+        if self.root == None:
+            raise Exception("Tree is empty")
+
+        current = self.root
+        while(current.leftChild != None):
+            current = current.leftChild
+        print(current.value)
+
+
 bt = binaryTree()
 
 #INSERT
-# bt.insert(10)
-# bt.insert(5)
-# bt.insert(20)
-# bt.insert(15)
-# bt.insert(25)
+bt.insert(10)
+bt.insert(5)
+bt.insert(20)
+bt.insert(15)
+bt.insert(25)
+bt.insert(1)
+bt.insert(6)
 
 #FIND
 # print(bt.find(20))
@@ -99,4 +111,7 @@ bt = binaryTree()
 # bt.traversePostOrder()
 
 #HEIGHT
-bt.height()
+# bt.height()
+
+#MIN IN A BINATY SEARCH TREE
+bt.min()
