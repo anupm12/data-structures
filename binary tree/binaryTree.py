@@ -98,6 +98,17 @@ class binaryTree:
 
         return min(min(left, right), root.value)
 
+    def equal(self, bt1):
+        print(self.__equal(self.root, bt1.root))
+
+    def __equal(self, first, second):
+        if first == None and second == None:
+            return 1
+        if first != None and second != None:
+            if first.value == second.value:
+                return self.__equal(first.leftChild, second.leftChild) and self.__equal(first.rightChild, second.rightChild)
+            return 0
+
 bt = binaryTree()
 
 #INSERT
@@ -108,6 +119,7 @@ bt.insert(15)
 bt.insert(25)
 bt.insert(1)
 bt.insert(6)
+bt.insert(8)
 
 #FIND
 # print(bt.find(20))
@@ -128,4 +140,17 @@ bt.insert(6)
 # bt.minBST()
 
 #MIN IN A BINATY TREE
-bt.minBT()
+# bt.minBT()
+
+#EQUALITY CHECKING
+bt1 = binaryTree()
+bt1.insert(10)
+bt1.insert(5)
+bt1.insert(20)
+bt1.insert(15)
+bt1.insert(25)
+bt1.insert(1)
+bt1.insert(6)
+bt1.insert(80)
+
+bt.equal(bt1)
