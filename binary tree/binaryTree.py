@@ -1,3 +1,5 @@
+import math
+
 class Node:
     def __init__(self, value = None):
         self.value = value
@@ -116,6 +118,18 @@ class binaryTree:
                     return tmp
             return 0
 
+    def validate(self):
+        print(self.__validate(self.root, -math.inf, math.inf))
+    
+    def __validate(self, root, min, max):
+        if root == None:
+            return 1
+            
+        if root.value < min or root.value > max:
+            return 0
+
+        return self.__validate(root.leftChild, -math.inf, root.value) and self.__validate(root.rightChild, root.value, math.inf)
+
 bt = binaryTree()
 
 #INSERT
@@ -150,14 +164,17 @@ bt.insert(8)
 # bt.minBT()
 
 #EQUALITY CHECKING
-bt1 = binaryTree()
-bt1.insert(10)
-bt1.insert(5)
-bt1.insert(20)
-bt1.insert(15)
-bt1.insert(25)
-bt1.insert(1)
-bt1.insert(6)
-bt1.insert(8)
+# bt1 = binaryTree()
+# bt1.insert(10)
+# bt1.insert(5)
+# bt1.insert(20)
+# bt1.insert(15)
+# bt1.insert(25)
+# bt1.insert(1)
+# bt1.insert(6)
+# bt1.insert(8)
 
-bt.equal(bt1)
+# bt.equal(bt1)
+
+#VALIDATE
+bt.validate()
