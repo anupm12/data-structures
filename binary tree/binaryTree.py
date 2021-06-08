@@ -68,7 +68,7 @@ class binaryTree:
         print(root.value)
 
     def height(self):
-        print(self.__height(self.root))
+        return self.__height(self.root)
 
     def __height(self, root):
         if root == None:
@@ -145,6 +145,13 @@ class binaryTree:
             self.__nodesAtK(root.leftChild, distance - 1)
             self.__nodesAtK(root.rightChild, distance - 1)
 
+    def traverseLevelOrder(self):
+        if self.root == None:
+            raise Exception("Tree is empty")
+
+        for i in range(self.height()+1):
+            self.nodesAtK(i)
+            
 bt = binaryTree()
 
 #INSERT
@@ -155,7 +162,7 @@ bt.insert(15)
 bt.insert(25)
 bt.insert(1)
 bt.insert(6)
-# bt.insert(8)
+bt.insert(8)
 
 #FIND
 # print(bt.find(20))
@@ -170,7 +177,7 @@ bt.insert(6)
 # bt.traversePostOrder()
 
 #HEIGHT
-# bt.height()
+# print(bt.height())
 
 #MIN IN A BINATY SEARCH TREE
 # bt.minBST()
@@ -195,4 +202,7 @@ bt.insert(6)
 # bt.validate()
 
 #PRINT NODES AT K FROM ROOT
-bt.nodesAtK(3)
+# bt.nodesAtK(0)
+
+#LEVEL ORDER TRAVERSAL
+bt.traverseLevelOrder()
