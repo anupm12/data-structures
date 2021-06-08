@@ -98,15 +98,22 @@ class binaryTree:
 
         return min(min(left, right), root.value)
 
-    def equal(self, bt1):
-        print(self.__equal(self.root, bt1.root))
+    def equal(self, second):
+        if second.root == None:
+            print(0)
+            return
+        print(self.__equal(self.root, second.root))
 
     def __equal(self, first, second):
         if first == None and second == None:
             return 1
         if first != None and second != None:
             if first.value == second.value:
-                return self.__equal(first.leftChild, second.leftChild) and self.__equal(first.rightChild, second.rightChild)
+                tmp = self.__equal(first.leftChild, second.leftChild) and self.__equal(first.rightChild, second.rightChild)
+                if tmp == None:
+                    return 0
+                else:
+                    return tmp
             return 0
 
 bt = binaryTree()
@@ -151,6 +158,6 @@ bt1.insert(15)
 bt1.insert(25)
 bt1.insert(1)
 bt1.insert(6)
-bt1.insert(80)
+bt1.insert(8)
 
 bt.equal(bt1)
