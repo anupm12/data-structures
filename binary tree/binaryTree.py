@@ -130,6 +130,21 @@ class binaryTree:
 
         return self.__validate(root.leftChild, -math.inf, root.value) and self.__validate(root.rightChild, root.value, math.inf)
 
+    def nodesAtK(self, distance):
+        if self.root == None:
+            raise Exception("Tree is empty")
+
+        self.__nodesAtK(self.root, distance)
+
+    def __nodesAtK(self, root, distance):
+        if root != None:
+            if distance == 0:
+                print(root.value)
+                return
+            
+            self.__nodesAtK(root.leftChild, distance - 1)
+            self.__nodesAtK(root.rightChild, distance - 1)
+
 bt = binaryTree()
 
 #INSERT
@@ -140,7 +155,7 @@ bt.insert(15)
 bt.insert(25)
 bt.insert(1)
 bt.insert(6)
-bt.insert(8)
+# bt.insert(8)
 
 #FIND
 # print(bt.find(20))
@@ -177,4 +192,7 @@ bt.insert(8)
 # bt.equal(bt1)
 
 #VALIDATE
-bt.validate()
+# bt.validate()
+
+#PRINT NODES AT K FROM ROOT
+bt.nodesAtK(3)
