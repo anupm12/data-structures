@@ -8,8 +8,10 @@ class Node:
 
 class binaryTree:
     root = None
+    count = 0
 
     def insert(self, val):
+        self.count += 1
         if self.root == None:
             self.root = Node(val)
         else:
@@ -152,16 +154,21 @@ class binaryTree:
         for i in range(self.height()+1):
             self.nodesAtK(i)
             
+    def size(self):
+        print(self.count)
+        
+        
+
 bt = binaryTree()
 
 #INSERT
 bt.insert(10)
 bt.insert(5)
 bt.insert(20)
-bt.insert(15)
-bt.insert(25)
 bt.insert(1)
 bt.insert(6)
+bt.insert(15)
+bt.insert(25)
 bt.insert(8)
 
 #FIND
@@ -205,4 +212,7 @@ bt.insert(8)
 # bt.nodesAtK(0)
 
 #LEVEL ORDER TRAVERSAL
-bt.traverseLevelOrder()
+# bt.traverseLevelOrder()
+
+#SIZE
+bt.size()
