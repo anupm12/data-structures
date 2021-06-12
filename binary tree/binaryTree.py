@@ -157,19 +157,30 @@ class binaryTree:
     def size(self):
         print(self.count)
         
-        
+    tmp = 0
+    def countLeaf(self):
+        if self.root != None:
+            self.__countLeaf(self.root)
+        print(self.tmp)
+    
+    def __countLeaf(self, root):
+        if root == None:
+            self.tmp += 1
+            return
+        self.__countLeaf(root.leftChild)
+        self.__countLeaf(root.rightChild)
 
 bt = binaryTree()
 
 #INSERT
-bt.insert(10)
-bt.insert(5)
-bt.insert(20)
-bt.insert(1)
-bt.insert(6)
-bt.insert(15)
-bt.insert(25)
-bt.insert(8)
+# bt.insert(10)
+# bt.insert(5)
+# bt.insert(20)
+# bt.insert(1)
+# bt.insert(6)
+# bt.insert(15)
+# bt.insert(25)
+# bt.insert(8)
 
 #FIND
 # print(bt.find(20))
@@ -215,4 +226,7 @@ bt.insert(8)
 # bt.traverseLevelOrder()
 
 #SIZE
-bt.size()
+# bt.size()
+
+#COUNT LEAF NODES
+bt.countLeaf()
