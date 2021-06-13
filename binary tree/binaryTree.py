@@ -185,6 +185,19 @@ class binaryTree:
 
         return max(max(left, right), root.value)
         
+    def contains(self, key):
+        self.__contains(self.root, key)
+    
+    def __contains(self, root, key):
+        if root == None:
+            return
+        
+        if root.value == key:
+            print("Found")
+            return
+
+        self.__contains(root.leftChild, key)
+        self.__contains(root.rightChild, key)
 
 
 bt = binaryTree()
@@ -249,4 +262,7 @@ bt.insert(8)
 # bt.countLeaf()
 
 #MAXIMUM IN A BINARY TREE
-bt.maxBT()
+# bt.maxBT()
+
+#CONTAINS - BINARY TREE
+bt.contains(25)
