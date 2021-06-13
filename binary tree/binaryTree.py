@@ -170,17 +170,34 @@ class binaryTree:
         self.__countLeaf(root.leftChild)
         self.__countLeaf(root.rightChild)
 
+    def maxBT(self):
+        print(self.__maxBT(self.root))
+    
+    def __maxBT(self, root):
+        if root == None:
+            return
+        
+        if root.leftChild == None or root.rightChild == None:
+            return root.value
+        
+        left = self.__maxBT(root.leftChild)
+        right = self.__maxBT(root.rightChild)
+
+        return max(max(left, right), root.value)
+        
+
+
 bt = binaryTree()
 
 #INSERT
-# bt.insert(10)
-# bt.insert(5)
-# bt.insert(20)
-# bt.insert(1)
-# bt.insert(6)
-# bt.insert(15)
-# bt.insert(25)
-# bt.insert(8)
+bt.insert(10)
+bt.insert(5)
+bt.insert(20)
+bt.insert(1)
+bt.insert(6)
+bt.insert(15)
+bt.insert(25)
+bt.insert(8)
 
 #FIND
 # print(bt.find(20))
@@ -229,4 +246,7 @@ bt = binaryTree()
 # bt.size()
 
 #COUNT LEAF NODES
-bt.countLeaf()
+# bt.countLeaf()
+
+#MAXIMUM IN A BINARY TREE
+bt.maxBT()
