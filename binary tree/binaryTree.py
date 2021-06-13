@@ -199,6 +199,22 @@ class binaryTree:
         self.__contains(root.leftChild, key)
         self.__contains(root.rightChild, key)
 
+    def areSibling(self, firstVal, secondVal):
+        self.__areSibling(self.root, firstVal, secondVal)
+
+    def __areSibling(self, root, firstVal, secondVal):
+        if root == None:
+            return
+
+        if root.leftChild == None or root.rightChild == None:
+            return
+
+        if root.leftChild.value == firstVal and root.rightChild.value == secondVal:
+            print("Yes")
+            return
+        
+        self.__areSibling(root.leftChild, firstVal, secondVal)
+        self.__areSibling(root.rightChild, firstVal, secondVal)
 
 bt = binaryTree()
 
@@ -265,4 +281,7 @@ bt.insert(8)
 # bt.maxBT()
 
 #CONTAINS - BINARY TREE
-bt.contains(25)
+# bt.contains(25)
+
+#SIBLINGS
+bt.areSibling(5, 20)
